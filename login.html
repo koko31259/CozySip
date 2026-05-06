@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login — Cozy Sip</title>
+  <style>
+    video {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; z-index: -1;
+    }
+    body { margin: 0; font-family: 'Segoe UI', sans-serif; }
+    .container { display:flex; justify-content:center; align-items:center; height:100vh; }
+    .login-box {
+      background: rgba(255,255,255,0.18); backdrop-filter:blur(12px);
+      padding:36px 32px; border-radius:16px; color:white; text-align:center;
+      width:320px; box-shadow:0 16px 48px rgba(0,0,0,0.4);
+      animation: fadeUp 0.6s ease;
+    }
+    .login-box h2 { margin:0 0 6px; font-size:1.4rem; }
+    .login-box p.sub { margin:0 0 22px; font-size:.85rem; opacity:.85; }
+    label { display:block; text-align:left; font-size:.8rem; margin:10px 0 4px; opacity:.9; }
+    input {
+      width:100%; padding:10px 12px; border:none; border-radius:8px;
+      box-sizing:border-box; font-size:.95rem;
+    }
+    .error-msg { color:#ffb3b3; font-size:.82rem; text-align:left; display:none; margin-top:6px; }
+    button.login-btn {
+      margin-top:22px; width:100%; padding:12px; background:#6b4226;
+      border:none; color:white; border-radius:10px; cursor:pointer;
+      font-size:1rem; font-weight:600; transition:background .2s;
+    }
+    button.login-btn:hover { background:#a67c3d; }
+    .info-text { margin-top:12px; font-size:.75rem; opacity:.65; }
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(20px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <video autoplay muted loop>
+    <source src="https://www.pexels.com/download/video/4786588/" type="video/mp4">
+  </video>
+
+  <div class="container">
+    <div class="login-box">
+      <h2>☕ Cozy Sip</h2>
+      <p class="sub">Sign in to reserve your table</p>
+
+      <label for="name">Full Name *</label>
+      <input type="text" id="name" placeholder="Amritpal Singh">
+
+      <label for="mobile">Mobile Number *</label>
+      <input type="text" id="mobile" placeholder="9876543210" maxlength="10">
+
+      <label for="city">City *</label>
+      <input type="text" id="city" placeholder="Chandigarh">
+
+      <div class="error-msg" id="error-msg"></div>
+
+      <button class="login-btn" onclick="login()">Login</button>
+      <div class="info-text" id="info-text"></div>
+      <div class="info-text" id="browser-info"></div>
+    </div>
+  </div>
+
+  <script>
+    /* ─── BOM: navigator info ─── */
+    document.getElementById("browser-info").textContent =
+      "Browser: " + navigator.appCodeName + " | Online: " + navigator.onLine;
+
+    /* ─── localStorage: returning user ─── */
+    const lastUser   = localStorage.getItem("cozy_last_user");
+    const visitCount = parseInt(localStorage.getItem("cozy_visit_count") || "0");
+    if (lastUser) {
+      document.getElementById("name").value = lastUser;
+      document.getElementById("info-text").textContent =
+        "Welcome back, " + lastUser + "! Visit #" + visitCount;
+    }
+
+    /* ─── BOM: setInterval — live title clock ─── */
+    const clock = setInterval(() => {
+      document.title = "☕ Cozy Sip — " + new Date().toLocaleTimeString();
+    }, 1000);
+    window.addEventListener("beforeunload", () => clearInterval(clock));
+
+    /* ─── DOM: Enter key submits (addEventListener) ─── */
+    document.addEventListener("keydown", (e) => { if (e.key === "Enter") login(); });
+
+    /* ─── Form Validation + Destructuring + JSON + localStorage ─── */
+    function login() {
+      // Object destructuring
+      const { name, mobile, city } = {
+        name:   document.getElementById("name").value.trim(),
+        mobile: document.getElementById("mobile").value.trim(),
+        city:   document.getElementById("city").value.trim()
+      };
+      const errorEl = document.getElementById("error-msg");
+
+      // Validation
+      if (!name)                        return showErr(errorEl, "⚠️ Name cannot be empty.");
+      if (!/^\d{10}$/.test(mobile))     return showErr(errorEl, "⚠️ Mobile must be 10 digits.");
+      if (!city)                        return showErr(errorEl, "⚠️ City cannot be empty.");
+      errorEl.style.display = "none";
+
+      /* JSON Handling */
+      const userObj  = { name, mobile, city, loginTime: new Date().toISOString() };
+      const userJSON = JSON.stringify(userObj);          // stringify
+      const parsed   = JSON.parse(userJSON);             // parse
+      console.log("User JSON:", userJSON);
+      console.log("Parsed:", parsed.name, parsed.loginTime);
+
+      /* Shallow vs Deep Copy */
+      const original  = { name, prefs: { theme: "light" } };
+      const shallow   = { ...original };                         // shallow
+      const deep      = JSON.parse(JSON.stringify(original));    // deep
+      shallow.prefs.theme = "dark";
+      console.log("Shallow copy — original prefs changed?", original.prefs.theme); // "dark"
+      deep.prefs.theme = "dark";
+      // original.prefs unaffected by deepCopy change
+
+      /* Array Destructuring */
+      const [first, ...others] = ["Espresso", "Croissant", "Sandwich"];
+      console.log("First item:", first, "| Others:", others);
+
+      /* localStorage — save user & login history */
+      localStorage.setItem("cozy_last_user", parsed.name);
+      localStorage.setItem("cozy_user_city",  parsed.city);
+      const history = JSON.parse(localStorage.getItem("cozy_login_history") || "[]");
+      history.push(parsed);
+      localStorage.setItem("cozy_login_history", JSON.stringify(history));
+      console.log("Total logins recorded:", history.length);
+
+      /* BOM: alert + setTimeout + location redirect */
+      alert("Welcome " + name + " from " + city + "! ☕");
+      setTimeout(() => { window.location.href = "index.html"; }, 300);
+    }
+
+    function showErr(el, msg) {
+      el.textContent = msg;
+      el.style.display = "block";
+    }
+  </script>
+</body>
+</html>

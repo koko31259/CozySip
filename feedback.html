@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cozy Sip — Feedback</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600&family=Josefin+Sans:wght@100;300;400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="feedback.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="index.html" class="nav-logo">Cozy Sip</a>
+    <a href="index.html" class="nav-back">← Back to Home</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <span class="page-tag">We Value Your Opinion</span>
+    <h1 class="page-title">Share Your <em>Experience</em></h1>
+    <p class="page-subtitle">Your feedback helps us brew better, every single day ☕</p>
+    <div class="hero-line"></div>
+  </div>
+
+  <!-- FORM -->
+  <div class="main-wrap">
+
+    <!-- CARD 1 — Name -->
+    <div class="card">
+      <span class="card-num">01</span>
+      <span class="card-tag">Step 01</span>
+      <div class="card-title">Your Good Name 😊</div>
+      <p class="card-desc">So we can thank you personally!</p>
+      <div class="card-divider"></div>
+      <input class="text-input" type="text" id="visitorName" placeholder="e.g. Priya Sharma"/>
+    </div>
+
+    <!-- CARD 2 — Star Ratings -->
+    <div class="card">
+      <span class="card-num">02</span>
+      <span class="card-tag">Step 02</span>
+      <div class="card-title">Rate Your Experience ⭐</div>
+      <p class="card-desc">Rate us on 4 things — be honest!</p>
+      <div class="card-divider"></div>
+
+      <div class="rating-row">
+        <span class="rating-label">👨‍🍳 Staff Behaviour</span>
+        <div class="stars-wrap">
+          <input type="radio" name="staff" id="st5" value="5"><label for="st5">★</label>
+          <input type="radio" name="staff" id="st4" value="4"><label for="st4">★</label>
+          <input type="radio" name="staff" id="st3" value="3"><label for="st3">★</label>
+          <input type="radio" name="staff" id="st2" value="2"><label for="st2">★</label>
+          <input type="radio" name="staff" id="st1" value="1"><label for="st1">★</label>
+        </div>
+      </div>
+
+      <div class="rating-row">
+        <span class="rating-label">🍽️ Food & Beverage Quality</span>
+        <div class="stars-wrap">
+          <input type="radio" name="quality" id="q5" value="5"><label for="q5">★</label>
+          <input type="radio" name="quality" id="q4" value="4"><label for="q4">★</label>
+          <input type="radio" name="quality" id="q3" value="3"><label for="q3">★</label>
+          <input type="radio" name="quality" id="q2" value="2"><label for="q2">★</label>
+          <input type="radio" name="quality" id="q1" value="1"><label for="q1">★</label>
+        </div>
+      </div>
+
+      <div class="rating-row">
+        <span class="rating-label">⚖️ Quantity & Portion Size</span>
+        <div class="stars-wrap">
+          <input type="radio" name="quantity" id="qty5" value="5"><label for="qty5">★</label>
+          <input type="radio" name="quantity" id="qty4" value="4"><label for="qty4">★</label>
+          <input type="radio" name="quantity" id="qty3" value="3"><label for="qty3">★</label>
+          <input type="radio" name="quantity" id="qty2" value="2"><label for="qty2">★</label>
+          <input type="radio" name="quantity" id="qty1" value="1"><label for="qty1">★</label>
+        </div>
+      </div>
+
+      <div class="rating-row">
+        <span class="rating-label">🪴 Cafe Ambience</span>
+        <div class="stars-wrap">
+          <input type="radio" name="ambience" id="a5" value="5"><label for="a5">★</label>
+          <input type="radio" name="ambience" id="a4" value="4"><label for="a4">★</label>
+          <input type="radio" name="ambience" id="a3" value="3"><label for="a3">★</label>
+          <input type="radio" name="ambience" id="a2" value="2"><label for="a2">★</label>
+          <input type="radio" name="ambience" id="a1" value="1"><label for="a1">★</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 3 — Recommend -->
+    <div class="card">
+      <span class="card-num">03</span>
+      <span class="card-tag">Step 03</span>
+      <div class="card-title">Would You Recommend Us? 🤝</div>
+      <p class="card-desc">Would you tell your friends about Cozy Sip?</p>
+      <div class="card-divider"></div>
+      <div class="yesno-wrap">
+        <input type="radio" class="yn" name="recommend" id="recYes" value="Yes — Absolutely!">
+        <label class="yesno-label" for="recYes">
+          <span class="yesno-icon">💛</span>Yes, Absolutely!
+        </label>
+        <input type="radio" class="yn" name="recommend" id="recMaybe" value="Maybe">
+        <label class="yesno-label" for="recMaybe">
+          <span class="yesno-icon">🤔</span>Maybe
+        </label>
+        <input type="radio" class="yn" name="recommend" id="recNo" value="Not This Time">
+        <label class="yesno-label" for="recNo">
+          <span class="yesno-icon">💬</span>Not This Time
+        </label>
+      </div>
+    </div>
+
+    <!-- SUBMIT -->
+    <button type="button" class="submit-btn" id="submitBtn">✦ &nbsp; Submit Feedback &nbsp; ✦</button>
+
+  </div>
+
+  <!-- SUCCESS OVERLAY -->
+  <div id="success-overlay" style="display:none;position:fixed;inset:0;background:rgba(43,21,9,0.92);z-index:9999;display:none;align-items:center;justify-content:center;">
+    <div style="text-align:center;padding:50px 40px;max-width:420px;">
+      <div style="font-size:4rem;margin-bottom:20px;">☕</div>
+      <div style="font-family:'Playfair Display',serif;font-size:2rem;color:#c9973a;margin-bottom:12px;">Thank You!</div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#f5ede0;opacity:.8;font-style:italic;margin-bottom:30px;">Your review means the world to us.<br>We'll keep brewing better, just for you!</p>
+      <a href="index.html" style="display:inline-block;font-family:'Josefin Sans',sans-serif;font-size:.7rem;letter-spacing:3px;text-transform:uppercase;background:#c9973a;color:#2b1509;padding:14px 36px;text-decoration:none;font-weight:700;">Back to Home</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('submitBtn').addEventListener('click', function() {
+      const name = document.getElementById('visitorName').value.trim();
+      if (!name) {
+        alert('Please enter your name before submitting!');
+        document.getElementById('visitorName').focus();
+        return;
+      }
+      // Save to localStorage
+      const feedback = {
+        name,
+        staff:    document.querySelector('input[name="staff"]:checked')?.value || null,
+        quality:  document.querySelector('input[name="quality"]:checked')?.value || null,
+        quantity: document.querySelector('input[name="quantity"]:checked')?.value || null,
+        ambience: document.querySelector('input[name="ambience"]:checked')?.value || null,
+        recommend:document.querySelector('input[name="recommend"]:checked')?.value || null,
+        at: new Date().toISOString()
+      };
+      const all = JSON.parse(localStorage.getItem('cozy_feedback') || '[]');
+      all.push(feedback);
+      localStorage.setItem('cozy_feedback', JSON.stringify(all));
+
+      // Show success overlay
+      const overlay = document.getElementById('success-overlay');
+      overlay.style.display = 'flex';
+    });
+  </script>
+
+</body>
+</html>

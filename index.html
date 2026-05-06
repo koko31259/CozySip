@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cozy Sip</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@100;300;400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="index.css"/>
+</head>
+<body>
+
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">Cozy Sip</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="beverages.html">Beverages</a></li>
+      <li><a href="croissants.html">Croissants</a></li>
+      <li><a href="sandwiches.html">Sandwiches</a></li>
+      <li><a href="coffee.html">Coffee</a></li>
+      <li><a href="build.html">Build Your Own</a></li>
+      <li><a href="about.html">About Us</a></li>
+    </ul>
+
+    <button class="nav-reserve">
+      <a href="login.html" style="text-decoration: none;">Login</a>
+    </button>
+    <button class="nav-reserve" onclick="showReserveModal()">
+      Reserve a Table
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+
+
+    <div class="hero-content">
+      <h1 class="hero-title">Where Every Sip<br>Tells a <em>Story</em></h1>
+      <p class="hero-subtitle">Authentic café flavours, brewed with love and a touch of Punjabi warmth.</p>
+      <div class="hero-btns">
+        <a href="beverages.html" class="btn-primary">Explore Our Menu</a>
+        <a href="#about" class="btn-outline">Our Story</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-strip">
+    <div class="marquee-inner">
+      <span class="marquee-item">☕ Espresso<span class="marquee-dot"></span></span>
+      <span class="marquee-item">🥐 Croissants<span class="marquee-dot"></span></span>
+      <span class="marquee-item">🫖 Herbal Teas<span class="marquee-dot"></span></span>
+      <span class="marquee-item">🥪 Sandwiches<span class="marquee-dot"></span></span>
+      <span class="marquee-item">🍰 Pastries<span class="marquee-dot"></span></span>
+      <span class="marquee-item">☕ Espresso<span class="marquee-dot"></span></span>
+      <span class="marquee-item">🥐 Croissants<span class="marquee-dot"></span></span>
+      <span class="marquee-item">🫖 Herbal Teas<span class="marquee-dot"></span></span>
+      <span class="marquee-item">🥪 Sandwiches<span class="marquee-dot"></span></span>
+      <span class="marquee-item">🍰 Pastries<span class="marquee-dot"></span></span>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="section-header reveal">
+      <span class="section-tag">What We Offer</span>
+      <h2 class="section-title">A Menu Crafted<br>with <em>Passion</em></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="features-grid reveal">
+      <div class="feat-card">
+        <span class="feat-icon">☕</span>
+        <h3 class="feat-name">Signature Beverages</h3>
+        <p class="feat-desc">From velvety lattes to dark espressos — every cup is a ritual, brewed to perfection.</p>
+        <a href="beverages.html" class="feat-link">View Beverages →</a>
+      </div>
+
+      <div class="feat-card">
+        <span class="feat-icon">🥐</span>
+        <h3 class="feat-name">Fresh Croissants</h3>
+        <p class="feat-desc">Baked at dawn, golden and flaky — butter, almond, pistachio, and more.</p>
+        <a href="croissants.html" class="feat-link">See Croissants →</a>
+      </div>
+
+      <div class="feat-card">
+        <span class="feat-icon">🥪</span>
+        <h3 class="feat-name">Gourmet Sandwiches</h3>
+        <p class="feat-desc">Crispy bread with paneer, chicken, mozzarella — light, fresh, absolutely delicious.</p>
+        <a href="sandwiches.html" class="feat-link">View Sandwiches →</a>
+      </div>
+
+      <div class="feat-card">
+        <span class="feat-icon">☕</span>
+        <h3 class="feat-name">its <em>Coffee</em> time</h3>
+        <p class="feat-desc">Enjoy Creamy desired thick your everyday needs coffee.</p>
+        <a href="coffee.html" class="feat-link">See Coffee →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=900&q=80" alt="Café interior"/>
+      
+      <div class="about-img-overlay"></div>
+
+    </div>
+    <div class="about-content">
+      <span class="about-year reveal">Established 2026 — Punjab, India</span>
+      <h2 class="about-title reveal">A New Era of<br>Café Culture</h2>
+      <p class="about-body reveal">Nestled in the heart of Punjab, Cozy Sip is a sanctuary for writers, artists, and dreamers. We believe the finest cup of coffee is not just a drink — it is an experience, a memory, a little piece of warmth you carry forever.</p>
+
+      <div class="about-stats reveal">
+        <div><div class="stat-num">4</div><div class="stat-label">Menu Pages</div></div>
+        <div><div class="stat-num">80+</div><div class="stat-label">Menu Items</div></div>
+        <div><div class="stat-num">12k</div><div class="stat-label">Happy Guests</div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="section-header reveal">
+      <span class="section-tag">A Visual Feast</span>
+      <h2 class="section-title">Life at <em>Cozy Sip</em></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="gallery-row">
+      <div class="gal-item"><img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=600&q=80" alt="Coffee"/><div class="gal-overlay"><span class="gal-label">Morning Espresso</span></div></div>
+      <div class="gal-item"><img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600&q=80" alt="Croissant"/><div class="gal-overlay"><span class="gal-label">Golden Croissants</span></div></div>
+      <div class="gal-item"><img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=600&q=80" alt="Café"/><div class="gal-overlay"><span class="gal-label">Café Ambience</span></div></div>
+      <div class="gal-item"><img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=600&q=80" alt="Sandwich"/><div class="gal-overlay"><span class="gal-label">Gourmet Sandwiches</span></div></div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="section-header reveal">
+      <span class="section-tag">Guest Stories</span>
+      <h2 class="section-title">What Our <em>Guests</em> Say</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="review-quote">"</div>
+        <p class="review-text">The almond croissant here is simply life-changing. The atmosphere is so cozy and warm. I visit every morning before work!</p>
+        <div class="reviewer"><div class="reviewer-avatar">A</div><div><div class="reviewer-name">Amritpal Singh</div><div class="reviewer-city">Rajpura, Punjab</div><div class="stars">★★★★★</div></div></div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-quote">"</div>
+        <p class="review-text">Honestly the best cappuccino in all of Punjab. The makers are true artists. This café feels like it exists outside of time.</p>
+        <div class="reviewer"><div class="reviewer-avatar">P</div><div><div class="reviewer-name">Priya Sharma</div><div class="reviewer-city">Patiala, Punjab</div><div class="stars">★★★★★</div></div></div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-quote">"</div>
+        <p class="review-text">The smoked chicken sandwich with a café latte — I dream about it every day. The décor and ambience is absolutely immaculate.</p>
+        <div class="reviewer"><div class="reviewer-avatar">R</div><div><div class="reviewer-name">Rahul Verma</div><div class="reviewer-city">Chandigarh, Punjab</div><div class="stars">★★★★★</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Cozy Sip</div>
+        <p class="footer-tagline">Where every cup is a journey. Join us for warmth, flavour, and timeless café charm in the heart of Punjab.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn">f</a><a href="#" class="social-btn">ig</a>
+          <a href="#" class="social-btn">tw</a><a href="#" class="social-btn">yt</a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Menu</h4>
+        <ul class="footer-links">
+          <li><a href="coffee.html">Espresso & Coffee</a></li>
+          <li><a href="beverages.html">Teas & Shakes</a></li>
+          <li><a href="croissants.html">Croissants</a></li>
+          <li><a href="sandwiches.html">Sandwiches</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Visit Us</h4>
+        <ul class="footer-links">
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#">Private Events</a></li>
+          <li><a href="#">Gift Cards</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="feedback.html" style="color:#c9973a;font-weight:600;">✦ Share Feedback</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Contact</h4>
+        <p class="contact-line">📍 Near Railway Station, Rajpura, Punjab 140401</p>
+        <p class="contact-line">📞 +91 98765 43210</p>
+        <p class="contact-line">✉️ hello@cozySip.in</p>
+        <p class="contact-line">🕗 Mon–Fri: 7am–10pm · Sat–Sun: 8am–11pm</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span id="live-clock" style="font-size:.8rem;opacity:.6;display:block;margin-bottom:4px;"></span>
+      <span class="footer-copy">© 2026 Cozy Sip. All rights reserved.</span>
+      <span class="footer-credits">Crafted with ☕ & love in Punjab</span>
+    </div>
+  </footer>
+
+  <script src="index.js"></script>
+</body>
+</html>

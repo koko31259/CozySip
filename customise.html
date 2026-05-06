@@ -1,0 +1,628 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Customise Your Order</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="custom.css"/>
+  
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Cozy Sip</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="beverages.html">Beverages</a></li>
+    <li><a href="croissants.html">Croissants</a></li>
+    <li><a href="sandwiches.html">Sandwiches</a></li>
+    <li><a href="coffee.html">Coffee</a></li>
+    <li><a href="build.html">Build Your Own</a></li>
+  </ul>
+  <button class="nav-cart-pill" onclick="scrollToCart()">🛒 Cart <span id="nav-cart-count">0</span></button>
+</nav>
+
+<div class="wrap">
+
+  <!-- ── LEFT ── -->
+  <div class="left">
+
+    <!-- ITEM HERO WITH BIG IMAGE -->
+    <div class="hero-card">
+      <div class="hero-img-wrap">
+        <img id="item-img" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80" alt="" class="hero-img" onerror="this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80'"/>
+        <div class="hero-cat-tag" id="item-cat">Coffee</div>
+      </div>
+      <div class="hero-body">
+        <div class="hero-name" id="item-name">Loading…</div>
+        <div class="hero-desc" id="item-desc"></div>
+        <div class="hero-price-row">
+          <div class="hero-base-price" id="item-base-price">₹0</div>
+          <div class="hero-base-label">base price</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIZE -->
+    <div id="sec-size">
+      <div class="sec"><span class="sec-title">☕ Size</span><div class="sec-line"></div></div>
+      <div class="pills" id="grp-size"></div>
+    </div>
+
+    <!-- MILK -->
+    <div id="sec-milk">
+      <div class="sec"><span class="sec-title">🥛 Milk Type</span><div class="sec-line"></div></div>
+      <div class="pills" id="grp-milk"></div>
+    </div>
+
+    <!-- TEMPERATURE -->
+    <div id="sec-temp">
+      <div class="sec"><span class="sec-title">🌡️ Temperature</span><div class="sec-line"></div></div>
+      <div class="pills" id="grp-temp"></div>
+    </div>
+
+    <!-- SUGAR -->
+    <div id="sec-sugar">
+      <div class="sec"><span class="sec-title">🍬 Sweetness</span><div class="sec-line"></div></div>
+      <div class="pills" id="grp-sugar"></div>
+    </div>
+
+    <!-- BREAD -->
+    <div id="sec-bread">
+      <div class="sec"><span class="sec-title">🍞 Bread Type</span><div class="sec-line"></div></div>
+      <div class="pills" id="grp-bread"></div>
+    </div>
+
+    <!-- INGREDIENTS WITH IMAGES -->
+    <div class="sec"><span class="sec-title">🥗 Ingredients — tap to remove</span><div class="sec-line"></div></div>
+    <div class="ing-grid" id="ing-grid"></div>
+
+    <!-- ADD-ONS WITH IMAGES -->
+    <div class="sec"><span class="sec-title">✨ Add-ons <span style="font-size:.6rem;text-transform:none;letter-spacing:0;color:#bbb">extra charges</span></span><div class="sec-line"></div></div>
+    <div class="addon-grid" id="addon-grid"></div>
+
+    <!-- SPECIAL NOTE -->
+    <div class="sec"><span class="sec-title">📝 Special Instructions</span><div class="sec-line"></div></div>
+    <textarea class="note-input" id="special-note" placeholder="e.g. extra hot, no foam, allergy info…"></textarea>
+
+    <!-- QTY + ADD TO CART -->
+    <div class="bottom-bar">
+      <div class="qty-ctrl">
+        <button class="qbtn" id="q-minus">−</button>
+        <div class="qnum" id="q-val">1</div>
+        <button class="qbtn" id="q-plus">+</button>
+      </div>
+      <div class="total-wrap">
+        <div class="total-lbl">Item Total</div>
+        <div class="total-val" id="item-total">₹0</div>
+      </div>
+      <button class="add-btn" id="add-btn">Add to Cart</button>
+    </div>
+
+  </div><!-- end left -->
+
+  <!-- ── RIGHT CART ── -->
+  <div class="cart-side" id="cart-side">
+    <div class="cart-head">
+      <div class="cart-head-title">Your Cart</div>
+      <div class="cart-head-sub" id="cart-count-lbl">0 items</div>
+    </div>
+    <div class="cart-items" id="cart-body">
+      <div class="empty-state" id="cart-empty">
+        <span class="empty-icon">🛒</span>
+        <span class="empty-txt">Your cart is empty</span>
+      </div>
+    </div>
+    <div class="cart-foot">
+      <div class="brow"><span class="blbl">Subtotal</span><span class="bval" id="b-sub">₹0</span></div>
+      <div class="brow"><span class="blbl">GST 5%</span><span class="bval" id="b-gst">₹0</span></div>
+      <div class="brow"><span class="blbl">Service 2%</span><span class="bval" id="b-svc">₹0</span></div>
+      <div class="bdiv"></div>
+      <div class="brow btotal"><span class="blbl">Total</span><span class="bval" id="b-total">₹0</span></div>
+      <button class="pay-btn" id="checkout-btn" disabled>Proceed to Pay</button>
+    </div>
+  </div>
+
+</div><!-- end wrap -->
+
+<!-- PAYMENT MODAL -->
+<div class="overlay" id="pay-overlay">
+  <div class="modal">
+    <button class="modal-close" id="modal-close">✕</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+/* ══════════════════════════════════════════
+   FULL MENU DATABASE
+══════════════════════════════════════════ */
+const DB = {
+  coffee:{
+    label:'Coffee',icon:'☕',
+    hasSize:true,hasMilk:true,hasTemp:true,hasSugar:true,hasBread:false,
+    defaultImg:'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80',
+    ingredients:[
+      {name:'Espresso',img:'https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=200&q=70'},
+      {name:'Milk',img:'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=200&q=70'},
+      {name:'Foam',img:'https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=200&q=70'},
+      {name:'Cream',img:'https://images.unsplash.com/photo-1587734195503-904fca47e0f9?w=200&q=70'},
+      {name:'Cocoa',img:'https://images.unsplash.com/photo-1548907040-4baa42d10919?w=200&q=70'},
+      {name:'Cinnamon',img:'https://images.unsplash.com/photo-1506368249639-73a05d6f6488?w=200&q=70'},
+      {name:'Ice',img:'https://images.unsplash.com/photo-1548907040-4baa42d10919?w=200&q=70'},
+      {name:'Vanilla',img:'https://images.unsplash.com/photo-1587734195503-904fca47e0f9?w=200&q=70'},
+    ],
+    addons:[
+      {id:'c1',name:'Extra Shot',desc:'One more espresso',price:50,img:'https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=200&q=70'},
+      {id:'c2',name:'Whipped Cream',desc:'Fresh heavy cream',price:40,img:'https://images.unsplash.com/photo-1587734195503-904fca47e0f9?w=200&q=70'},
+      {id:'c3',name:'Oat Milk',desc:'Switch to oat milk',price:30,img:'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=200&q=70'},
+      {id:'c4',name:'Flavour Syrup',desc:'Vanilla/Caramel/Hazelnut',price:35,img:'https://images.unsplash.com/photo-1587734195503-904fca47e0f9?w=200&q=70'},
+      {id:'c5',name:'Cold Foam',desc:'Creamy cold foam',price:45,img:'https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=200&q=70'},
+      {id:'c6',name:'Cinnamon Dust',desc:'Freshly ground',price:20,img:'https://images.unsplash.com/photo-1506368249639-73a05d6f6488?w=200&q=70'},
+    ],
+    items:[
+      {name:'Espresso Solo',price:120,img:'https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=600&q=80',desc:'Single dark-roasted shot — pure intensity in a tiny porcelain cup.'},
+      {name:'Double Espresso',price:150,img:'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&q=80',desc:'Two shots of bold espresso — for those who need the extra kick.'},
+      {name:'Cappuccino',price:160,img:'https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=600&q=80',desc:'Espresso with steamed milk and thick foam, cocoa dusted on top.'},
+      {name:'Flat White',price:180,img:'https://images.unsplash.com/photo-1541167760496-1628856ab772?w=600&q=80',desc:'Double ristretto with velvety micro-foam — richer than a latte.'},
+      {name:'Café Latte',price:180,img:'https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?w=600&q=80',desc:'Espresso with steamed milk and a thin layer of foam on top.'},
+      {name:'Café Viennois',price:220,img:'https://images.unsplash.com/photo-1587734195503-904fca47e0f9?w=600&q=80',desc:'Espresso topped with freshly whipped cream and chocolate dust.'},
+      {name:'Pour Over Filter',price:250,img:'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80',desc:'Hand-poured single origin Ethiopian — fruity and bright notes.'},
+      {name:'Cold Brew Reserve',price:240,img:'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=80',desc:'18-hour cold brew — smooth, chocolatey, over large ice cubes.'},
+      {name:'Spiced Mocha',price:210,img:'https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?w=600&q=80',desc:'Espresso with cardamom, cinnamon, chocolate and hint of chilli.'},
+      {name:'Honey Cinnamon Latte',price:200,img:'https://images.unsplash.com/photo-1587734195503-904fca47e0f9?w=600&q=80',desc:'Espresso with honey, cinnamon syrup and steamed milk on top.'},
+      {name:'Mocha',price:210,img:'https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?w=600&q=80',desc:'Espresso with chocolate syrup, steamed milk and whipped cream.'},
+      {name:'Rose Latte',price:220,img:'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&q=80',desc:'Espresso with rose syrup, steamed milk and dried rose petals.'},
+      {name:'Coconut Latte',price:210,img:'https://images.unsplash.com/photo-1594631661960-34c5a4a1c901?w=600&q=80',desc:'Espresso with coconut milk and toasted coconut flakes on top.'},
+      {name:'Hazelnut Latte',price:200,img:'https://images.unsplash.com/photo-1541167760496-1628856ab772?w=600&q=80',desc:'Espresso with hazelnut syrup and creamy steamed milk on top.'},
+      {name:'Cookie Latte',price:215,img:'https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=600&q=80',desc:'Espresso with Biscoff cookie butter syrup and oat milk foam.'},
+      {name:'Iced Americano',price:160,img:'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=80',desc:'Two espresso shots over ice with cold water — clean and bold.'},
+    ]
+  },
+  beverages:{
+    label:'Beverages',icon:'🥤',
+    hasSize:true,hasMilk:true,hasTemp:true,hasSugar:true,hasBread:false,
+    defaultImg:'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=600&q=80',
+    ingredients:[
+      {name:'Milk',img:'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=200&q=70'},
+      {name:'Ice',img:'https://images.unsplash.com/photo-1548907040-4baa42d10919?w=200&q=70'},
+      {name:'Fruit',img:'https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=200&q=70'},
+      {name:'Honey',img:'https://images.unsplash.com/photo-1587734195503-904fca47e0f9?w=200&q=70'},
+      {name:'Tea',img:'https://images.unsplash.com/photo-1597318181409-cf64d0b5d8a2?w=200&q=70'},
+      {name:'Seeds',img:'https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=200&q=70'},
+      {name:'Cream',img:'https://images.unsplash.com/photo-1587734195503-904fca47e0f9?w=200&q=70'},
+      {name:'Sugar',img:'https://images.unsplash.com/photo-1548907040-4baa42d10919?w=200&q=70'},
+    ],
+    addons:[
+      {id:'b1',name:'Extra Fruit',desc:'Double fruit portions',price:40,img:'https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=200&q=70'},
+      {id:'b2',name:'Protein Boost',desc:'Whey protein added',price:60,img:'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=200&q=70'},
+      {id:'b3',name:'Chia Seeds',desc:'Superfood chia seeds',price:30,img:'https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=200&q=70'},
+      {id:'b4',name:'Honey Drizzle',desc:'Local raw honey',price:25,img:'https://images.unsplash.com/photo-1587734195503-904fca47e0f9?w=200&q=70'},
+      {id:'b5',name:'Coconut Cream',desc:'Thick coconut cream',price:35,img:'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=200&q=70'},
+      {id:'b6',name:'Boba Pearls',desc:'Brown sugar tapioca',price:50,img:'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=200&q=70'},
+    ],
+    items:[
+      {name:'Café Latte',price:180,img:'https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?w=600&q=80',desc:'Rich espresso with steamed milk and beautiful latte art on top.'},
+      {name:'Cappuccino',price:160,img:'https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=600&q=80',desc:'Bold espresso with equal parts steamed milk and thick dry foam.'},
+      {name:'Hot Chocolate',price:200,img:'https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?w=600&q=80',desc:'Rich Belgian chocolate with steamed milk — a warm hug in a cup.'},
+      {name:'Matcha Latte',price:220,img:'https://images.unsplash.com/photo-1515823662972-da6a2e4d3002?w=600&q=80',desc:'Ceremonial grade matcha whisked with steamed oat milk.'},
+      {name:'Chamomile Tea',price:150,img:'https://images.unsplash.com/photo-1597318181409-cf64d0b5d8a2?w=600&q=80',desc:'Gentle chamomile blossoms steeped in hot spring water.'},
+      {name:'Rose Earl Grey',price:160,img:'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&q=80',desc:'Bergamot Earl Grey with a hint of rose petal infusion.'},
+      {name:'Honey Lavender Latte',price:230,img:'https://images.unsplash.com/photo-1587734195503-904fca47e0f9?w=600&q=80',desc:'Lavender syrup, local honey and steamed milk — floral and sweet.'},
+      {name:'Butter Coffee',price:190,img:'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80',desc:'Blended coffee with grass-fed butter — creamy and energising.'},
+      {name:'Iced Café Latte',price:200,img:'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=80',desc:'Cold espresso poured over ice with chilled milk — refreshing.'},
+      {name:'Sparkling Lemonade',price:160,img:'https://images.unsplash.com/photo-1523371054106-bbf80586c38c?w=600&q=80',desc:'Freshly squeezed lemons with sparkling water and mint.'},
+      {name:'Strawberry Smoothie',price:240,img:'https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=600&q=80',desc:'Fresh strawberries blended with yoghurt and a touch of honey.'},
+      {name:'Vanilla Cold Brew',price:260,img:'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=80',desc:'24-hour cold brew with Madagascar vanilla — smooth and bold.'},
+      {name:'Mango Lassi',price:180,img:'https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=600&q=80',desc:'Alphonso mango blended with thick yoghurt and cardamom.'},
+      {name:'Fresh Orange Juice',price:150,img:'https://images.unsplash.com/photo-1602584386319-fa8eb4361c2c?w=600&q=80',desc:'Cold-pressed Nagpur oranges — pure and pulpy.'},
+      {name:'Oreo Milkshake',price:250,img:'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80',desc:'Oreo cookies blended with vanilla ice cream and cold milk.'},
+      {name:'Mixed Berry Smoothie',price:240,img:'https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=600&q=80',desc:'Blueberry, strawberry and raspberry — antioxidant-rich and thick.'},
+    ]
+  },
+  croissants:{
+    label:'Croissants',icon:'🥐',
+    hasSize:false,hasMilk:false,hasTemp:true,hasSugar:false,hasBread:false,
+    defaultImg:'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600&q=80',
+    ingredients:[
+      {name:'Butter',img:'https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=200&q=70'},
+      {name:'Flour',img:'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=200&q=70'},
+      {name:'Egg',img:'https://images.unsplash.com/photo-1506976785307-8732e854ad03?w=200&q=70'},
+      {name:'Cream',img:'https://images.unsplash.com/photo-1587734195503-904fca47e0f9?w=200&q=70'},
+      {name:'Almond',img:'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=200&q=70'},
+      {name:'Chocolate',img:'https://images.unsplash.com/photo-1606101273945-e9eba94ac6c6?w=200&q=70'},
+      {name:'Jam',img:'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=200&q=70'},
+      {name:'Cheese',img:'https://images.unsplash.com/photo-1548907040-4baa42d10919?w=200&q=70'},
+    ],
+    addons:[
+      {id:'r1',name:'Extra Butter',desc:'French butter packet',price:25,img:'https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=200&q=70'},
+      {id:'r2',name:'Jam Pot',desc:'Seasonal berry jam',price:30,img:'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=200&q=70'},
+      {id:'r3',name:'Cream Cheese',desc:'Whipped cream cheese',price:35,img:'https://images.unsplash.com/photo-1587734195503-904fca47e0f9?w=200&q=70'},
+      {id:'r4',name:'Nutella Cup',desc:'Hazelnut choc spread',price:40,img:'https://images.unsplash.com/photo-1606101273945-e9eba94ac6c6?w=200&q=70'},
+      {id:'r5',name:'Warm Up',desc:'Fresh from the oven',price:15,img:'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=200&q=70'},
+      {id:'r6',name:'Honey Drizzle',desc:'Raw wildflower honey',price:25,img:'https://images.unsplash.com/photo-1587734195503-904fca47e0f9?w=200&q=70'},
+    ],
+    items:[
+      {name:'Butter Croissant',price:120,img:'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600&q=80',desc:'Classic flaky croissant with 72 layers of pure French butter.'},
+      {name:'Pain au Chocolat',price:150,img:'https://images.unsplash.com/photo-1606101273945-e9eba94ac6c6?w=600&q=80',desc:'Buttery dough folded around two dark chocolate batons.'},
+      {name:'Almond Croissant',price:170,img:'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80',desc:'Filled and topped with almond frangipane and toasted flakes.'},
+      {name:'Strawberry Croissant',price:160,img:'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600&q=80',desc:'Fresh strawberry compote swirled into buttery laminated dough.'},
+      {name:'Lemon Curd Croissant',price:175,img:'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600&q=80',desc:'Sharp lemon curd with Sicilian lemons inside a flaky shell.'},
+      {name:'Pistachio Croissant',price:210,img:'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80',desc:'Pistachio cream filling with crushed nuts on top — luxurious.'},
+      {name:'Caramel Croissant',price:200,img:'https://images.unsplash.com/photo-1606101273945-e9eba94ac6c6?w=600&q=80',desc:'Salted caramel sauce drizzled inside a warm crispy croissant.'},
+      {name:'Cheese Ham Croissant',price:200,img:'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600&q=80',desc:'Gruyère cheese and Black Forest ham inside buttery pastry.'},
+      {name:'Blueberry Croissant',price:180,img:'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600&q=80',desc:'Wild blueberry compote in a delicate laminated croissant shell.'},
+      {name:'Double Chocolate Croissant',price:220,img:'https://images.unsplash.com/photo-1606101273945-e9eba94ac6c6?w=600&q=80',desc:'Dark chocolate dough with milk chocolate filling — indulgent.'},
+      {name:'Hazelnut Croissant',price:190,img:'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80',desc:'Gianduja hazelnut cream inside — inspired by Italian gianduja.'},
+      {name:'Cream Cheese Croissant',price:195,img:'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600&q=80',desc:'Whipped cream cheese with a hint of vanilla inside pastry.'},
+      {name:'Cookie Butter Croissant',price:205,img:'https://images.unsplash.com/photo-1606101273945-e9eba94ac6c6?w=600&q=80',desc:'Biscoff cookie butter swirled inside and drizzled on top.'},
+      {name:'Peanut Butter Croissant',price:180,img:'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600&q=80',desc:'Natural peanut butter with banana chips inside flaky dough.'},
+      {name:'Apple Cinnamon Croissant',price:175,img:'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600&q=80',desc:'Spiced apple compote with cinnamon sugar in a golden pastry.'},
+      {name:'Vanilla Custard Croissant',price:200,img:'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80',desc:'Silky vanilla custard cream filled inside a warm flaky shell.'},
+    ]
+  },
+  sandwiches:{
+    label:'Sandwiches',icon:'🥪',
+    hasSize:false,hasMilk:false,hasTemp:true,hasSugar:false,hasBread:true,
+    defaultImg:'https://images.unsplash.com/photo-1509722747041-616f39b57569?w=600&q=80',
+    ingredients:[
+      {name:'Lettuce',img:'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=200&q=70'},
+      {name:'Tomato',img:'https://images.unsplash.com/photo-1561136594-7f68413baa99?w=200&q=70'},
+      {name:'Onion',img:'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=200&q=70'},
+      {name:'Cheese',img:'https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=200&q=70'},
+      {name:'Mayo',img:'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=200&q=70'},
+      {name:'Mustard',img:'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=200&q=70'},
+      {name:'Pickles',img:'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=200&q=70'},
+      {name:'Avocado',img:'https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=200&q=70'},
+      {name:'Bacon',img:'https://images.unsplash.com/photo-1509722747041-616f39b57569?w=200&q=70'},
+      {name:'Cucumber',img:'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=200&q=70'},
+    ],
+    addons:[
+      {id:'s1',name:'Extra Cheese',desc:'Double cheese layer',price:40,img:'https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=200&q=70'},
+      {id:'s2',name:'Add Avocado',desc:'Fresh sliced avocado',price:50,img:'https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=200&q=70'},
+      {id:'s3',name:'Extra Sauce',desc:"Chef's house sauce",price:20,img:'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=200&q=70'},
+      {id:'s4',name:'Add Egg',desc:'Fried or scrambled',price:35,img:'https://images.unsplash.com/photo-1506976785307-8732e854ad03?w=200&q=70'},
+      {id:'s5',name:'Pickle Side',desc:'Gherkin pickles',price:15,img:'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=200&q=70'},
+      {id:'s6',name:'Make it Spicy',desc:'Chilli oil + jalapeño',price:25,img:'https://images.unsplash.com/photo-1561136594-7f68413baa99?w=200&q=70'},
+    ],
+    items:[
+      {name:'Classic Club',price:280,img:'https://images.unsplash.com/photo-1509722747041-616f39b57569?w=600&q=80',desc:'Triple decker with chicken, bacon, lettuce, tomato and mayo.'},
+      {name:'Garden Veggie',price:240,img:'https://images.unsplash.com/photo-1540713434306-58505cf1b6fc?w=600&q=80',desc:'Roasted veggies, hummus and pesto on artisan sourdough.'},
+      {name:'Smoked Chicken',price:300,img:'https://images.unsplash.com/photo-1509722747041-616f39b57569?w=600&q=80',desc:'Applewood smoked chicken, Swiss cheese and whole grain mustard.'},
+      {name:'Egg Mayo',price:220,img:'https://images.unsplash.com/photo-1540713434306-58505cf1b6fc?w=600&q=80',desc:'Free range eggs with Dijon mayo and fresh chives on brioche.'},
+      {name:'Grilled Paneer',price:260,img:'https://images.unsplash.com/photo-1509722747041-616f39b57569?w=600&q=80',desc:'Tandoori spiced paneer with mint chutney and onion rings.'},
+      {name:'Tuna Melt',price:320,img:'https://images.unsplash.com/photo-1540713434306-58505cf1b6fc?w=600&q=80',desc:'Albacore tuna with cheddar, melted under a sourdough crust.'},
+      {name:'Caprese Sandwich',price:270,img:'https://images.unsplash.com/photo-1509722747041-616f39b57569?w=600&q=80',desc:'Buffalo mozzarella, heirloom tomato and basil pesto on ciabatta.'},
+      {name:'Wild Mushroom Focaccia',price:290,img:'https://images.unsplash.com/photo-1540713434306-58505cf1b6fc?w=600&q=80',desc:'Sautéed wild mushrooms with truffle oil on house-baked focaccia.'},
+      {name:'BBQ Pulled Chicken',price:320,img:'https://images.unsplash.com/photo-1509722747041-616f39b57569?w=600&q=80',desc:'Slow-cooked pulled chicken in smoky BBQ sauce with coleslaw.'},
+      {name:'Three Cheese Melt',price:240,img:'https://images.unsplash.com/photo-1540713434306-58505cf1b6fc?w=600&q=80',desc:'Cheddar, mozzarella and Gruyère melted on toasted sourdough.'},
+      {name:'Avocado Toast Sandwich',price:280,img:'https://images.unsplash.com/photo-1509722747041-616f39b57569?w=600&q=80',desc:'Smashed avo with chilli flakes, lemon and poached egg on rye.'},
+      {name:'Chicken Tikka Sandwich',price:300,img:'https://images.unsplash.com/photo-1540713434306-58505cf1b6fc?w=600&q=80',desc:'Charred chicken tikka with raita and mint chutney in a roll.'},
+      {name:'BLT Classic',price:270,img:'https://images.unsplash.com/photo-1509722747041-616f39b57569?w=600&q=80',desc:'Crispy bacon, iceberg lettuce, ripe tomato and herbed aioli.'},
+      {name:'Mediterranean Sandwich',price:270,img:'https://images.unsplash.com/photo-1540713434306-58505cf1b6fc?w=600&q=80',desc:'Feta, olives, roasted pepper and hummus on pita bread.'},
+      {name:'Pesto Chicken Panini',price:295,img:'https://images.unsplash.com/photo-1509722747041-616f39b57569?w=600&q=80',desc:'Grilled chicken breast with basil pesto and sun-dried tomato.'},
+      {name:'Pepperoni Baguette',price:310,img:'https://images.unsplash.com/photo-1540713434306-58505cf1b6fc?w=600&q=80',desc:'Italian pepperoni with mozzarella and marinara in a crispy baguette.'},
+    ]
+  }
+};
+
+/* ══════════════════════════════════════════ STATE ══════════════════════════════════════════ */
+let curCat=null,curItem=null,qty=1;
+let selSize=null,selMilk=null,selTemp=null,selSugar=null,selBread=null;
+let removedIngs=new Set(), selAddons=new Set();
+let cart=JSON.parse(localStorage.getItem('cozy_cart')||'[]');
+
+/* ══════════════════════════════════════════ INIT ══════════════════════════════════════════ */
+(function init(){
+  const p=new URLSearchParams(location.search);
+  const {cat='coffee',item:iName=''} = Object.fromEntries(p.entries());
+  curCat=cat;
+  const catData=DB[cat];
+  if(!catData)return;
+  const found=catData.items.find(i=>i.name===decodeURIComponent(iName));
+  curItem=found||catData.items[0];
+  renderHero(catData,curItem);
+  renderOptions(catData);
+  renderIngredients(catData);
+  renderAddons(catData);
+  renderCart();
+  updateTotal();
+})();
+
+/* ══════════════════════════════════════════ RENDER HERO ══════════════════════════════════════════ */
+function renderHero(cat,item){
+  document.getElementById('item-img').src=item.img||cat.defaultImg;
+  document.getElementById('item-img').alt=item.name;
+  document.getElementById('item-cat').textContent=cat.icon+' '+cat.label;
+  document.getElementById('item-name').textContent=item.name;
+  document.getElementById('item-desc').textContent=item.desc;
+  document.getElementById('item-base-price').textContent='₹'+item.price;
+  document.title=item.name+' — Cozy Sip';
+}
+
+/* ══════════════════════════════════════════ OPTIONS ══════════════════════════════════════════ */
+function makePills(containerId,opts,defaultVal,onChange){
+  const el=document.getElementById(containerId);
+  el.innerHTML='';
+  let defSet=false;
+  opts.forEach(o=>{
+    const p=document.createElement('div');
+    p.className='pill'+(o.default?' sel':'');
+    p.innerHTML=o.label+(o.price?`<span class="xtra">+₹${o.price}</span>`:'');
+    if(o.default&&!defSet){defSet=true;onChange(o);}
+    p.addEventListener('click',()=>{
+      el.querySelectorAll('.pill').forEach(x=>x.classList.remove('sel'));
+      p.classList.add('sel');
+      onChange(o);
+      updateTotal();
+    });
+    el.appendChild(p);
+  });
+}
+
+function renderOptions(cat){
+  const show=(id,v)=>document.getElementById(id).style.display=v?'':'none';
+  show('sec-size',cat.hasSize);
+  show('sec-milk',cat.hasMilk);
+  show('sec-temp',cat.hasTemp);
+  show('sec-sugar',cat.hasSugar);
+  show('sec-bread',cat.hasBread);
+
+  if(cat.hasSize) makePills('grp-size',[
+    {label:'Small',price:0},{label:'Regular',price:0,default:true},{label:'Large',price:40},{label:'XL',price:70}
+  ],null,v=>selSize=v);
+
+  if(cat.hasMilk) makePills('grp-milk',[
+    {label:'Full Cream',price:0,default:true},{label:'Skimmed',price:0},{label:'Oat Milk',price:30},{label:'Almond',price:35},{label:'Soy',price:30}
+  ],null,v=>selMilk=v);
+
+  if(cat.hasTemp) makePills('grp-temp',[
+    {label:'Hot 🔥',price:0,default:true},{label:'Iced 🧊',price:20},{label:'Warm',price:0}
+  ],null,v=>selTemp=v);
+
+  if(cat.hasSugar) makePills('grp-sugar',[
+    {label:'No Sugar',price:0},{label:'Less Sweet',price:0},{label:'Regular',price:0,default:true},{label:'Extra Sweet',price:10}
+  ],null,v=>selSugar=v);
+
+  if(cat.hasBread) makePills('grp-bread',[
+    {label:'Sourdough',price:0,default:true},{label:'Multigrain',price:0},{label:'Brioche',price:30},{label:'Rye',price:0},{label:'Ciabatta',price:20},{label:'Focaccia',price:25}
+  ],null,v=>selBread=v);
+}
+
+/* ══════════════════════════════════════════ INGREDIENTS ══════════════════════════════════════════ */
+function renderIngredients(cat){
+  const grid=document.getElementById('ing-grid');
+  grid.innerHTML='';
+  cat.ingredients.forEach(ing=>{
+    const card=document.createElement('div');
+    card.className='ing-card';
+    card.innerHTML=`
+      <img class="ing-thumb" src="${ing.img}" alt="${ing.name}" loading="lazy" onerror="this.style.display='none'">
+      <div class="ing-foot">
+        <span class="ing-name">${ing.name}</span>
+        <div class="ing-check">✓</div>
+      </div>`;
+    card.addEventListener('click',()=>{
+      if(removedIngs.has(ing.name)){
+        removedIngs.delete(ing.name);
+        card.classList.remove('off');
+        card.querySelector('.ing-check').textContent='✓';
+      } else {
+        removedIngs.add(ing.name);
+        card.classList.add('off');
+        card.querySelector('.ing-check').textContent='';
+      }
+    });
+    grid.appendChild(card);
+  });
+}
+
+/* ══════════════════════════════════════════ ADDONS ══════════════════════════════════════════ */
+function renderAddons(cat){
+  const grid=document.getElementById('addon-grid');
+  grid.innerHTML='';
+  cat.addons.forEach(a=>{
+    const card=document.createElement('div');
+    card.className='addon';
+    card.innerHTML=`
+      <div class="addon-tick">✓</div>
+      <img class="addon-thumb" src="${a.img}" alt="${a.name}" loading="lazy" onerror="this.style.height='40px'">
+      <div class="addon-body">
+        <div class="addon-name">${a.name}</div>
+        <div class="addon-desc">${a.desc}</div>
+        <div class="addon-price">+₹${a.price}</div>
+      </div>`;
+    card.addEventListener('click',()=>{
+      if(selAddons.has(a.id)){selAddons.delete(a.id);card.classList.remove('sel');}
+      else{selAddons.add(a.id);card.classList.add('sel');}
+      updateTotal();
+    });
+    grid.appendChild(card);
+  });
+}
+
+/* ══════════════════════════════════════════ PRICING ══════════════════════════════════════════ */
+function calcPrice(){
+  if(!curItem)return 0;
+  let p=curItem.price;
+  p+=(selSize?.price||0)+(selMilk?.price||0)+(selTemp?.price||0)+(selSugar?.price||0)+(selBread?.price||0);
+  const cat=DB[curCat];
+  selAddons.forEach(id=>{const a=cat.addons.find(x=>x.id===id);if(a)p+=a.price;});
+  return p;
+}
+function updateTotal(){
+  document.getElementById('item-total').textContent='₹'+(calcPrice()*qty);
+}
+
+/* ══════════════════════════════════════════ QTY ══════════════════════════════════════════ */
+document.getElementById('q-minus').addEventListener('click',()=>{if(qty>1){qty--;document.getElementById('q-val').textContent=qty;updateTotal();}});
+document.getElementById('q-plus').addEventListener('click',()=>{if(qty<10){qty++;document.getElementById('q-val').textContent=qty;updateTotal();}});
+
+/* ══════════════════════════════════════════ ADD TO CART ══════════════════════════════════════════ */
+document.getElementById('add-btn').addEventListener('click',()=>{
+  if(!curItem)return;
+  const cat=DB[curCat];
+  const mods=[];
+  if(selSize&&selSize.label!=='Regular')mods.push(selSize.label);
+  if(selMilk&&selMilk.label!=='Full Cream')mods.push(selMilk.label);
+  if(selTemp&&selTemp.label!=='Hot 🔥')mods.push(selTemp.label);
+  if(selSugar&&selSugar.label!=='Regular')mods.push(selSugar.label);
+  if(selBread&&selBread.label!=='Sourdough')mods.push(selBread.label);
+  selAddons.forEach(id=>{const a=cat.addons.find(x=>x.id===id);if(a)mods.push(a.name);});
+  const rem=[...removedIngs];
+  if(rem.length)mods.push('No: '+rem.join(', '));
+  const note=document.getElementById('special-note').value.trim();
+  const unitPrice=calcPrice();
+  const cartItem={id:Date.now()+Math.random(),name:curItem.name,cat:curCat,img:curItem.img,unitPrice,qty,total:unitPrice*qty,mods,note};
+  cart=JSON.parse(JSON.stringify([...cart,cartItem]));
+  localStorage.setItem('cozy_cart',JSON.stringify(cart));
+  renderCart();
+  toast(curItem.name+' added to cart! 🛒');
+  const btn=document.getElementById('add-btn');
+  btn.textContent='Added ✓';btn.style.background='#2d7a3a';
+  setTimeout(()=>{btn.textContent='Add to Cart';btn.style.background='';},1500);
+});
+
+/* ══════════════════════════════════════════ RENDER CART ══════════════════════════════════════════ */
+function renderCart(){
+  const body=document.getElementById('cart-body');
+  const empty=document.getElementById('cart-empty');
+  const cntLbl=document.getElementById('cart-count-lbl');
+  const navCnt=document.getElementById('nav-cart-count');
+  const checkBtn=document.getElementById('checkout-btn');
+  navCnt.textContent=cart.length;
+  cntLbl.textContent=cart.length===0?'0 items':cart.length+' item'+(cart.length>1?'s':'');
+  if(!cart.length){body.innerHTML='';body.appendChild(empty);checkBtn.disabled=true;updateBill(0);return;}
+  const frag=document.createDocumentFragment();
+  if(body.contains(empty))body.removeChild(empty);
+  body.innerHTML='';
+  cart.forEach(item=>{
+    const d=document.createElement('div');d.className='citem';
+    d.innerHTML=`
+      <img class="citem-img" src="${item.img}" alt="${item.name}" onerror="this.style.display='none'">
+      <div class="citem-info">
+        <div class="citem-name">${item.name}</div>
+        <div class="citem-mods">${item.mods.join(' · ')||'Standard'}</div>
+      </div>
+      <div class="citem-right">
+        <div class="citem-price">₹${item.total}</div>
+        <div class="citem-qty">×${item.qty}</div>
+        <button class="citem-del" data-id="${item.id}">✕</button>
+      </div>`;
+    frag.appendChild(d);
+  });
+  body.appendChild(frag);
+  body.querySelectorAll('.citem-del').forEach(btn=>{
+    btn.addEventListener('click',e=>{
+      e.stopPropagation();
+      cart=cart.filter(i=>String(i.id)!==btn.dataset.id);
+      localStorage.setItem('cozy_cart',JSON.stringify(cart));
+      renderCart();
+    });
+  });
+  updateBill(cart.reduce((s,i)=>s+i.total,0));
+  checkBtn.disabled=false;
+}
+
+function updateBill(sub){
+  const gst=Math.round(sub*.05),svc=Math.round(sub*.02),tot=sub+gst+svc;
+  document.getElementById('b-sub').textContent='₹'+sub;
+  document.getElementById('b-gst').textContent='₹'+gst;
+  document.getElementById('b-svc').textContent='₹'+svc;
+  document.getElementById('b-total').textContent='₹'+tot;
+}
+
+/* ══════════════════════════════════════════ PAYMENT ══════════════════════════════════════════ */
+document.getElementById('checkout-btn').addEventListener('click',openPayment);
+document.getElementById('modal-close').addEventListener('click',closeModal);
+document.getElementById('pay-overlay').addEventListener('click',e=>{if(e.target===document.getElementById('pay-overlay'))closeModal();});
+
+function openPayment(){
+  const sub=cart.reduce((s,i)=>s+i.total,0);
+  const gst=Math.round(sub*.05),svc=Math.round(sub*.02),tot=sub+gst+svc;
+  let rows=cart.map(i=>`<tr><td>${i.name} ×${i.qty}${i.mods.length?'<br><small style="color:#bbb">'+i.mods.join(', ')+'</small>':''}</td><td>₹${i.total}</td></tr>`).join('');
+  document.getElementById('modal-body').innerHTML=`
+    <div class="modal-title">Your Bill</div>
+    <div class="modal-sub">Cozy Sip · Rajpura</div>
+    <table class="bill-tbl">
+      ${rows}
+      <tr><td style="color:#aaa;font-size:.82rem">GST (5%)</td><td>₹${gst}</td></tr>
+      <tr><td style="color:#aaa;font-size:.82rem">Service (2%)</td><td>₹${svc}</td></tr>
+      <tr class="trow"><td>Total Payable</td><td>₹${tot}</td></tr>
+    </table>
+    <div class="modal-sub" style="margin-top:0;margin-bottom:12px">Payment Method</div>
+    <div class="pay-methods">
+      <div class="pm sel" data-m="UPI"><span class="pm-icon">📱</span><span class="pm-label">UPI</span></div>
+      <div class="pm" data-m="Card"><span class="pm-icon">💳</span><span class="pm-label">Card</span></div>
+      <div class="pm" data-m="Wallet"><span class="pm-icon">👛</span><span class="pm-label">Wallet</span></div>
+      <div class="pm" data-m="Cash"><span class="pm-icon">💵</span><span class="pm-label">Cash</span></div>
+    </div>
+    <div class="upi-wrap show" id="upi-wrap">
+      <span class="mlabel">UPI ID</span>
+      <input class="minput" id="upi-id" placeholder="name@upi" type="text">
+    </div>
+    <div class="err" id="pay-err"></div>
+    <button class="mpay-btn" id="pay-now">Pay ₹${tot}</button>`;
+
+  let method='UPI';
+  document.querySelector('.pay-methods').addEventListener('click',e=>{
+    const pm=e.target.closest('.pm');if(!pm)return;
+    document.querySelectorAll('.pm').forEach(x=>x.classList.remove('sel'));
+    pm.classList.add('sel');method=pm.dataset.m;
+    document.getElementById('upi-wrap').classList.toggle('show',method==='UPI');
+  });
+  document.getElementById('pay-now').addEventListener('click',()=>processPayment(tot,method));
+  document.getElementById('pay-overlay').classList.add('open');
+}
+
+function processPayment(total,method){
+  const errEl=document.getElementById('pay-err');
+  if(method==='UPI'){
+    const u=document.getElementById('upi-id')?.value.trim();
+    if(!u||!u.includes('@')){errEl.textContent='⚠️ Enter a valid UPI ID (name@upi)';errEl.style.display='block';return;}
+  }
+  errEl.style.display='none';
+  const oid='CS'+Date.now().toString().slice(-6);
+  const rec={oid,items:JSON.parse(JSON.stringify(cart)),total,method,at:new Date().toISOString()};
+  const h=JSON.parse(localStorage.getItem('cozy_orders')||'[]');
+  h.push(rec);localStorage.setItem('cozy_orders',JSON.stringify(h));
+  cart=[];localStorage.setItem('cozy_cart','[]');
+  // Replace entire modal content with only the success screen
+  document.getElementById('pay-overlay').innerHTML=`
+    <div style="background:#1a0a00;border-radius:20px;width:min(420px,92vw);padding:44px 32px;text-align:center;font-family:'DM Sans',sans-serif;box-shadow:0 24px 64px rgba(0,0,0,.6);">
+      <div style="font-size:3rem;margin-bottom:12px;">✅</div>
+      <div style="font-family:'Playfair Display',serif;color:#f5e6d3;font-size:1.6rem;margin-bottom:6px;">Payment Successful!</div>
+      <div style="color:#bba080;font-size:.9rem;margin-bottom:20px;">Thank you for choosing Cozy Sip</div>
+      <div style="background:#2b1509;border-radius:12px;padding:18px 24px;margin-bottom:20px;">
+        <div style="color:#f5e6d3;font-size:2rem;font-weight:700;">₹${total}</div>
+        <div style="color:#bba080;font-size:.82rem;margin-top:4px;">Paid via ${method}</div>
+        <div style="color:#888;font-size:.75rem;margin-top:6px;letter-spacing:1px;">Order ID: ${oid}</div>
+      </div>
+      <button onclick="window.location.href='index.html'"
+        style="width:100%;padding:14px;background:#c47735;color:white;border:none;border-radius:12px;
+               font-size:.85rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif;">
+        Order More ☕
+      </button>
+    </div>`;
+  renderCart();
+  toast('Payment of ₹'+total+' received! 🎉');
+}
+
+function closeModal(){document.getElementById('pay-overlay').classList.remove('open');}
+
+/* ══════════════════════════════════════════ UTILS ══════════════════════════════════════════ */
+function toast(msg){
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3200);
+}
+function scrollToCart(){document.getElementById('cart-side').scrollIntoView({behavior:'smooth'});}
+window.scrollToCart=scrollToCart;
+</script>
+</body>
+</html>

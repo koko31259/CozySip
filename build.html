@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Build Your Own — Cozy Sip</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="build.css">
+
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Cozy Sip</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="beverages.html">Beverages</a></li>
+    <li><a href="croissants.html">Croissants</a></li>
+    <li><a href="sandwiches.html">Sandwiches</a></li>
+    <li><a href="coffee.html">Coffee</a></li>
+    <li><a href="build.html" class="active">Build Your Own</a></li>
+    <li><a href="about.html">About Us</a></li>
+  </ul>
+  <button class="nav-reserve"><a href="login.html" style="text-decoration:none;color:inherit;">Login</a></button>
+    <button class="nav-reserve" onclick="showBuildReserveModal()">Reserve a Table</button>
+</nav>
+
+<div class="wrap">
+
+  <!-- ── LEFT ── -->
+  <div class="left">
+
+    <div class="page-head">
+      <div class="page-tag">✦ Create from scratch</div>
+      <h1 class="page-title">Build Your <em style="font-style:italic;color:var(--accent)">Own</em></h1>
+      <p class="page-sub">Choose a category, pick your base, customise every ingredient, set amounts — make it exactly yours.</p>
+    </div>
+
+    <!-- CATEGORY TABS -->
+    <div class="cat-tabs" id="cat-tabs">
+      <div class="cat-tab active" data-cat="coffee">
+        <img class="tab-img" src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=200&q=70" alt="Coffee">
+        <div class="tab-info">
+          <span class="tab-label">☕ Coffee</span>
+          <span class="tab-sub">Espresso based</span>
+        </div>
+      </div>
+      <div class="cat-tab" data-cat="beverages">
+        <img class="tab-img" src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=200&q=70" alt="Beverages">
+        <div class="tab-info">
+          <span class="tab-label">🥤 Beverages</span>
+          <span class="tab-sub">Drinks & smoothies</span>
+        </div>
+      </div>
+      <div class="cat-tab" data-cat="croissants">
+        <img class="tab-img" src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=200&q=70" alt="Croissants">
+        <div class="tab-info">
+          <span class="tab-label">🥐 Croissants</span>
+          <span class="tab-sub">Flaky pastries</span>
+        </div>
+      </div>
+      <div class="cat-tab" data-cat="sandwiches">
+        <img class="tab-img" src="https://images.unsplash.com/photo-1509722747041-616f39b57569?w=200&q=70" alt="Sandwiches">
+        <div class="tab-info">
+          <span class="tab-label">🥪 Sandwiches</span>
+          <span class="tab-sub">Loaded & fresh</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIVE PREVIEW CARD -->
+    <div class="preview-card">
+      <img class="preview-visual" id="preview-img" src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=300&q=80" alt="Preview"/>
+      <div class="preview-details">
+        <div class="preview-cat" id="preview-cat">☕ Coffee</div>
+        <div class="preview-name" id="preview-name">Your Custom Creation</div>
+        <div class="preview-tags" id="preview-tags"></div>
+        <div class="preview-price-label">estimated total</div>
+        <div class="preview-price" id="preview-price">₹120</div>
+      </div>
+    </div>
+
+    <!-- BASE / STYLE -->
+    <div class="sec"><span class="sec-title" id="base-sec-title">☕ Choose Your Base</span><div class="sec-line"></div></div>
+    <div class="pills" id="base-pills"></div>
+
+    <!-- SIZE (drinks) -->
+    <div id="sec-size">
+      <div class="sec"><span class="sec-title">📐 Cup Size</span><div class="sec-line"></div></div>
+      <div class="size-row" id="size-row"></div>
+    </div>
+
+    <!-- MILK (drinks) -->
+    <div id="sec-milk">
+      <div class="sec"><span class="sec-title">🥛 Milk Type</span><div class="sec-line"></div></div>
+      <div class="pills" id="milk-pills"></div>
+    </div>
+
+    <!-- TEMPERATURE -->
+    <div id="sec-temp">
+      <div class="sec"><span class="sec-title">🌡️ Temperature</span><div class="sec-line"></div></div>
+      <div class="pills" id="temp-pills"></div>
+    </div>
+
+    <!-- SUGAR (drinks) -->
+    <div id="sec-sugar">
+      <div class="sec"><span class="sec-title">🍬 Sweetness</span><div class="sec-line"></div></div>
+      <div class="pills" id="sugar-pills"></div>
+    </div>
+
+    <!-- BREAD (sandwiches) -->
+    <div id="sec-bread">
+      <div class="sec"><span class="sec-title">🍞 Bread Type</span><div class="sec-line"></div></div>
+      <div class="pills" id="bread-pills"></div>
+    </div>
+
+    <!-- AMOUNTS / SLIDERS -->
+    <div id="sec-sliders">
+      <div class="sec"><span class="sec-title" id="slider-sec-title">⚗️ Adjust Amounts</span><div class="sec-line"></div></div>
+      <div class="sliders-grid" id="sliders-grid"></div>
+    </div>
+
+    <!-- INGREDIENTS WITH IMAGES -->
+    <div class="sec"><span class="sec-title">🥗 Ingredients <span style="font-size:.58rem;text-transform:none;letter-spacing:0;color:#bbb">— tap to toggle</span></span><div class="sec-line"></div></div>
+    <div class="ing-grid" id="ing-grid"></div>
+
+    <!-- ADD-ONS -->
+    <div class="sec"><span class="sec-title">✨ Add-ons <span style="font-size:.58rem;text-transform:none;letter-spacing:0;color:#bbb">— extra charges</span></span><div class="sec-line"></div></div>
+    <div class="addon-grid" id="addon-grid"></div>
+
+    <!-- SPECIAL NOTE -->
+    <div class="sec"><span class="sec-title">📝 Special Instructions</span><div class="sec-line"></div></div>
+    <textarea class="note-input" id="note" placeholder="e.g. extra hot, less foam, no onion, allergy note…"></textarea>
+
+    <!-- BOTTOM BAR -->
+    <div class="bottom-bar">
+      <div class="qty-ctrl">
+        <button class="qbtn" id="q-minus">−</button>
+        <div class="qnum" id="q-val">1</div>
+        <button class="qbtn" id="q-plus">+</button>
+      </div>
+      <div class="total-wrap">
+        <div class="total-lbl">Item Total</div>
+        <div class="total-val" id="item-total">₹120</div>
+      </div>
+      <button class="add-btn" id="add-btn">Add to Cart</button>
+    </div>
+
+  </div><!-- end left -->
+
+  <!-- ── RIGHT CART ── -->
+  <div class="cart-side">
+    <div class="cart-head">
+      <div class="cart-head-title">Your Cart</div>
+      <div class="cart-head-sub" id="cart-count-lbl">0 items</div>
+    </div>
+    <div class="cart-items" id="cart-body">
+      <div class="empty-state" id="cart-empty">
+        <span class="empty-icon">🛒</span>
+        <span class="empty-txt">Nothing here yet</span>
+      </div>
+    </div>
+    <div class="cart-foot">
+      <div class="brow"><span class="blbl">Subtotal</span><span class="bval" id="b-sub">₹0</span></div>
+      <div class="brow"><span class="blbl">GST 5%</span><span class="bval" id="b-gst">₹0</span></div>
+      <div class="brow"><span class="blbl">Service 2%</span><span class="bval" id="b-svc">₹0</span></div>
+      <div class="bdiv"></div>
+      <div class="brow btotal"><span class="blbl">Total</span><span class="bval" id="b-total">₹0</span></div>
+      <button class="pay-btn" id="checkout-btn" disabled>Proceed to Pay</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- PAYMENT OVERLAY -->
+<div class="overlay" id="pay-overlay">
+  <div class="modal">
+    <button class="modal-close" id="modal-close">✕</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+  <!-- FEEDBACK BANNER -->
+  <div style="background:#2b1509;border-top:2px solid rgba(201,151,58,.3);padding:32px 40px;text-align:center;">
+    <p style="font-family:'Josefin Sans',sans-serif;font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:#c9973a;margin-bottom:10px;">We'd Love to Hear From You</p>
+    <a href="feedback.html" style="display:inline-block;font-family:'Josefin Sans',sans-serif;font-size:.7rem;letter-spacing:3px;text-transform:uppercase;background:#c9973a;color:#2b1509;padding:14px 36px;text-decoration:none;font-weight:700;transition:background .3s;">✦ &nbsp; Share Your Feedback &nbsp; ✦</a>
+  </div>
+
+  <script src="build.js"></script>
+</body>
+</html>
